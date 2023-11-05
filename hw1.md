@@ -2,7 +2,6 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-
         VStack {
             Text("1103308          詹旻嘉")
                 .fontWeight(.heavy)
@@ -36,8 +35,6 @@ struct ContentView: View {
                         .foregroundColor(Color(red:20/255,green:200/255,blue:255/255))
                         .offset(x:0,y:45)
                 )
-
-
         }
         .background(Color(red:180/255,green:153/255,blue:255/255))
     }
