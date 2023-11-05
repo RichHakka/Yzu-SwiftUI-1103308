@@ -1,60 +1,135 @@
-<h1>HW1</h1>
+<h1>HW2</h1>
     
 ```swift
 
      import SwiftUI
 
+
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Text("1103308          詹旻嘉")
-                .fontWeight(.heavy)
-                .font(.system(size:38))
-                .foregroundColor(Color(red:100/255,green:70/255,blue:215/255))
-            Image("Chan2")
-                .resizable()
-                .scaledToFit()
-                .foregroundColor(.white)
-                .shadow(color: .gray, radius: 3, x: 0.5, y: 0.5)
-            Text("我直接在作業1跳舞 ")
-                .padding(.all,10)
-                .fontWeight(.semibold)
-                .frame(width:380, height:230, alignment:.top)
-                .font(.system(size:41))
-                .background(Color(red:135/255,green:100/255,blue:225/255))
-                .foregroundColor(Color(red:0/255,green:180/255,blue:255/255))
-                .border(Color(red:139/255,green:120/255,blue:255/255),width:3)
-                .cornerRadius(10)
-                .overlay(
-                    Text("ጿ ኈ ቼ ኈ ዽ ቼ ጿ ዽ ኈ ቼ ኈ           ጿ ኈ ቼ ኈ ዽ ቼ           ኈ ቼ ኈ ")
-                        .padding(.all,10)
-                        .fontWeight(.semibold)
-                        .font(.system(size:41))
-                        .offset(x:0,y:20)
-                        .foregroundColor(Color(red:20/255,green:220/255,blue:225/255))
-                )
-                .overlay(
-                    Image(systemName: "figure.dance")
-                        .font(.system(size:80,weight:.light))
-                        .foregroundColor(Color(red:20/255,green:200/255,blue:255/255))
-                        .offset(x:0,y:45)
-                )
-        }
-        .background(Color(red:180/255,green:153/255,blue:255/255))
-    }
-}
-;
-struct ContentView_Preiviews: PreviewProvider
-{
-    static var previews: some View 
-    {
-        ContentView()
-    }
-}
-
-
-
+    @State var count:Int=4
+    @State var result:Bool=false
+    @State var lose:Bool=false
+    @State var tie:Bool=false
+    @State var alertTypes:Game? = nil
     
+    enum Game{
+        case tie
+        case loss
+        case victory
+    }
+    var body: some View 
+    {
+        VStack{
+            if(count==0)
+            {
+                Image("Paper")
+                    
+                    .padding(.all,10)
+                    .frame(width:400, height:450,alignment:.bottom)
+                    .rotationEffect(.degrees(180))
+            }
+            else if(count==1)
+            {
+                Image("Scissors")
+                    .padding(.all,10)
+                    .frame(width:400, height:450,alignment:.center)
+                    .rotationEffect(.degrees(180))
+                    
+            }
+            else if(count==2)
+            {
+                Image("Stone")
+                    .padding(.all,10)
+                    .frame(width:400, height:450,alignment:.center)
+                    .rotationEffect(.degrees(180))
+                
+            }
+            else if (count==4)
+            {
+                Image("RockPaperScissors")    
+                    .resizable()
+                    .padding(.all,10)
+                    .frame(width:420,height:450,alignment:.center)
+                
+            }
+            HStack{
+                Button(action:{
+                    count = Int.random(in:0...2)
+                    result.toggle()
+                    if (count==0){alertTypes = .tie}
+                    else if(count==1){alertTypes = .loss}
+                    else if(count==2){alertTypes = .victory}
+                }
+                       ,
+                       label:{
+                    Image("Paper")
+                        .resizable()
+                        .padding(.all,10)
+                        .frame(width:125, height:150,alignment: .center)
+                        .alert(isPresented:$result, content: {Result()})
+                    
+                })
+                Button(action:{
+                    count = Int.random(in:0...2)
+                    result.toggle()
+                    if (count==0){alertTypes = .loss}
+                    else if(count==1){alertTypes = .victory}
+                    else if(count==2){alertTypes = .tie}
+                }
+                       ,
+                       label:{
+                    Image("Stone")
+                        .resizable()
+                        .padding(.all,10)
+                        .frame(width:125, height:150,alignment: .center)
+                        .alert(isPresented:$result, content: {Result()})
+                    
+                })
+                Button(action:{
+                    count = Int.random(in:0...2)
+                    result.toggle()
+                    if (count==0){alertTypes = .victory}
+                    else if(count==1){alertTypes = .tie}
+                    else if(count==2){alertTypes = .loss}
+                }
+                    ,
+                   label:{
+                        Image("Scissors")
+                            .resizable()
+                            .padding(.all,10)
+                            .frame(width:125, height:150,alignment: .center)
+                            .alert(isPresented:$result, content: {Result()})
+                            
+                })
+            }
+            
+        }
+        .background(Color.black)
+    }
+    func Result()->Alert{
+        switch alertTypes {
+        case .victory:
+            return Alert(
+                title:Text("You Win!!"),
+                dismissButton: .default(Text("OK"),action:{count=4})
+            )
+        case .tie:
+            return Alert(
+                title:Text("Tie!!"),
+                dismissButton: .default(Text("OK"),action:{count=4})
+            )
+        case .loss:
+            return Alert(
+                title:Text("You Lose!!"),
+                dismissButton: .default(Text("OK"),action:{count=4})
+            )
+        default: return Alert(title:Text("error"))
+        }
+        
+    }
+}
+
 ```
 
-<img width="40%"  src="https://github.com/RichHakka/Yzu-SwiftUI-1103308/blob/main/HW1.png">
+<img width="40%"  src="https://github.com/RichHakka/Yzu-SwiftUI-1103308/blob/main/HW2-1.png">
+<img width="40%"  src="https://github.com/RichHakka/Yzu-SwiftUI-1103308/blob/main/HW2-2.png">
