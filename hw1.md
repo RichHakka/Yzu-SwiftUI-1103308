@@ -57,3 +57,4 @@ struct ContentView_Preiviews: PreviewProvider
     
 ```
 
+<img width="40%"  src="https://github.com/RichHakka/Yzu-SwiftUI-1103308/blob/main/HW1.png">
