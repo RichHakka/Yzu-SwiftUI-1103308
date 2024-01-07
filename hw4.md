@@ -84,7 +84,8 @@ var courses = [
     Course(name:"YouTube",image:"YouTube",description:"影片串流平台",isFeature: true),
     Course(name:"WhatsApp",image:"WhatsApp",description:"跨平台加密通訊應用程式",isFeature: true),
     Course(name:"Gmail",image:"Gmail",description:"Google郵件",isFeature: true),
-]                                                   
+]     
+                                              
 struct FullImageRow: View { 
     var thisCourse:Course
     var body: some View {
