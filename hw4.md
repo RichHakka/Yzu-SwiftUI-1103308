@@ -196,11 +196,12 @@ struct MyApp: App {
         }
     }
 }
-imp
+
 struct TermAndDescription: Identifiable{ 
     var id = UUID()
     var term:String
     var description:String }
+    
 var myDictionary = [
     TermAndDescription(term: "Temu", description: "由中國電商巨頭拼多多推出、進軍歐美市場的電商App"),
     TermAndDescription(term: "CapCut", description: "是由字節跳動旗下臉萌科技開發的一款免費的全功能專業影片編輯與製作軟體"),
@@ -213,6 +214,7 @@ var myDictionary = [
     TermAndDescription(term: "WhatsApp", description: "Meta 公司旗下一款用於智慧型手機的跨平台加密即時通訊應用程式"),
     TermAndDescription(term: "Gmail", description: "Google公司發布的一個免費電子郵件服務")
     ]
+    
 struct CardView: View {
     @State var currentCard = 0 
     var body: some View {
@@ -252,6 +254,7 @@ struct CardView: View {
         }
     }
 }
+
 struct SettingView: View {
     let displayFontType=[".default",".rounded",".monospaced",".serief"]
     @State var displayFontSelected=0
