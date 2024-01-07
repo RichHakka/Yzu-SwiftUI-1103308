@@ -4,6 +4,41 @@
 
 import SwiftUI
 
+@main
+struct MyApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}
+
+var courses = [ 
+    Course(name:"Temu",image:"Temu",description:"電商購物平台",isFeature: true),
+    Course(name:"CapCut",image:"CapCut",description:"影音剪輯軟體",isFeature: true),
+    Course(name:"Max",image:"HBOmax",description:"電視電影串流媒體",isFeature: true),
+    Course(name:"Threads",image:"Threads",description:"文字版instagram",isFeature: true),
+    Course(name:"TikTok",image:"TikTok",description:"短影音平台",isFeature: true),
+    Course(name:"Instagram",image:"Instagram",description:"社群平台",isFeature: true),
+    Course(name:"Chrome",image:"Chrome",description:"搜尋引擎",isFeature: true),
+    Course(name:"YouTube",image:"YouTube",description:"影片串流平台",isFeature: true),
+    Course(name:"WhatsApp",image:"WhatsApp",description:"跨平台加密通訊應用程式",isFeature: true),
+    Course(name:"Gmail",image:"Gmail",description:"Google郵件",isFeature: true)
+]    
+
+var myDictionary = [
+    TermAndDescription(term: "Temu", description: "由中國電商巨頭拼多多推出、進軍歐美市場的電商App"),
+    TermAndDescription(term: "CapCut", description: "是由字節跳動旗下臉萌科技開發的一款免費的全功能專業影片編輯與製作軟體"),
+    TermAndDescription(term: "HBOmax", description: "華納兄弟探索提供的串流媒體影片服務平台"),
+    TermAndDescription(term: "Threads", description: "Meta 旗下的社群網路平台。使用者可以在平台上發表相片及文字貼文。"),
+    TermAndDescription(term: "TikTok", description: "由中國大陸字節跳動公司所創辦營運的短影片社交平台"),
+    TermAndDescription(term: "Instagram", description: "Meta公司的一款免費提供線上圖片及影片分享的社群應用軟體"),
+    TermAndDescription(term: "Chrome", description: "Google開發的免費網頁瀏覽器"),
+    TermAndDescription(term: "YouTube", description: "美國Alphabet旗下的影片分享網站，也是目前全球最大的影片搜尋和分享平台"),
+    TermAndDescription(term: "WhatsApp", description: "Meta 公司旗下一款用於智慧型手機的跨平台加密即時通訊應用程式"),
+    TermAndDescription(term: "Gmail", description: "Google公司發布的一個免費電子郵件服務")
+    ]
+
 struct ContentView: View {
     var body: some View {
         VStack {
@@ -72,19 +107,6 @@ struct Course:Identifiable
     var description:String
     var isFeature:Bool
 }
-
-var courses = [ 
-    Course(name:"Temu",image:"Temu",description:"電商購物平台",isFeature: true),
-    Course(name:"CapCut",image:"CapCut",description:"影音剪輯軟體",isFeature: true),
-    Course(name:"Max",image:"HBOmax",description:"電視電影串流媒體",isFeature: true),
-    Course(name:"Threads",image:"Threads",description:"文字版instagram",isFeature: true),
-    Course(name:"TikTok",image:"TikTok",description:"短影音平台",isFeature: true),
-    Course(name:"Instagram",image:"Instagram",description:"社群平台",isFeature: true),
-    Course(name:"Chrome",image:"Chrome",description:"搜尋引擎",isFeature: true),
-    Course(name:"YouTube",image:"YouTube",description:"影片串流平台",isFeature: true),
-    Course(name:"WhatsApp",image:"WhatsApp",description:"跨平台加密通訊應用程式",isFeature: true),
-    Course(name:"Gmail",image:"Gmail",description:"Google郵件",isFeature: true)
-]     
                                               
 struct FullImageRow: View { 
     var thisCourse:Course
@@ -108,6 +130,7 @@ struct FullImageRow: View {
         }
     } 
 }
+
 struct BasicImageRow: View { 
     var thisCourse:Course
     var body: some View {
@@ -121,6 +144,7 @@ struct BasicImageRow: View {
         }
     } 
 }
+
 struct CourseDetailView:View{
     @Environment(\.presentationMode) 
     var presentationMode 
@@ -189,33 +213,11 @@ struct CourseListView:View{
     }
 }
 
-@main
-struct MyApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
-}
-
 struct TermAndDescription: Identifiable{ 
     var id = UUID()
     var term:String
     var description:String }
-    
-var myDictionary = [
-    TermAndDescription(term: "Temu", description: "由中國電商巨頭拼多多推出、進軍歐美市場的電商App"),
-    TermAndDescription(term: "CapCut", description: "是由字節跳動旗下臉萌科技開發的一款免費的全功能專業影片編輯與製作軟體"),
-    TermAndDescription(term: "HBOmax", description: "華納兄弟探索提供的串流媒體影片服務平台"),
-    TermAndDescription(term: "Threads", description: "Meta 旗下的社群網路平台。使用者可以在平台上發表相片及文字貼文。"),
-    TermAndDescription(term: "TikTok", description: "由中國大陸字節跳動公司所創辦營運的短影片社交平台"),
-    TermAndDescription(term: "Instagram", description: "Meta公司的一款免費提供線上圖片及影片分享的社群應用軟體"),
-    TermAndDescription(term: "Chrome", description: "Google開發的免費網頁瀏覽器"),
-    TermAndDescription(term: "YouTube", description: "美國Alphabet旗下的影片分享網站，也是目前全球最大的影片搜尋和分享平台"),
-    TermAndDescription(term: "WhatsApp", description: "Meta 公司旗下一款用於智慧型手機的跨平台加密即時通訊應用程式"),
-    TermAndDescription(term: "Gmail", description: "Google公司發布的一個免費電子郵件服務")
-    ]
-    
+        
 struct CardView: View {
     @State var currentCard = 0 
     var body: some View {
@@ -293,23 +295,6 @@ struct SettingView: View {
         }
     }
 }
-
-
-
-                                                 
-
-                                                    
-    
-    
-                                             
-    
-    
-
-
-
-
-
-
 
 
     
